@@ -20,9 +20,6 @@
 #change which one you want to use (default aosp)
 CLANG=aosp
 
-# KernelSU
-curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
-
 #Clone AnyKernel
         if [ -d AnyKernel3 ]; then
 		  	rm -rf AnyKernel3 && git clone https://github.com/ashutoshchettri/AnyKernel3 AnyKernel3
