@@ -30,18 +30,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential \
-            gcc \
-            make \
-            flex \
-            bison \
-            libssl-dev \
-            libelf-dev \
-            bc
+
 
       - name: Configure Kernel
         run: pwd
