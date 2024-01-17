@@ -1,18 +1,39 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@2.2.0
-
 jobs:
-  build-for-linux:
-    docker: 
-      - image: cimg/node:14.10.1
+  build:
+    docker:
+      - image: circleci/android:api-34
+
     steps:
       - checkout
-      - run: make
+
+      # Install dependencies
+      - run:
+          name: Install Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y \
+              build-essential \
+              gcc \
+              make \
+              flex \
+              bison \
+              libssl-dev \
+              libelf-dev \
+              bc
+
+      # Configure your kernel build (adjust as needed)
+      # Build the kernel
+      - run:
+          name: Build Kernel
+          command: make -j$(nproc) ARCH=arm64
+
+      # Add more steps as needed, such as copying artifacts, running tests, etc.
+      # ...
 
 workflows:
-  version: 2.1
+  version: 2
   build:
     jobs:
-      - build-for-linux
+      - build
