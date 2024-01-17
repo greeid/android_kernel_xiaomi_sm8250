@@ -45,4 +45,6 @@ jobs:
 
       - name: Build Kernel
         run: |
+          make oldconfig
+          make menuconfig
           make -j$(nproc) ARCH=arm64
