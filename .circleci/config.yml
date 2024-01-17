@@ -27,7 +27,9 @@ jobs:
       # Build the kernel
       - run:
           name: Build Kernel
-          command: make -j$(nproc) ARCH=arm64
+          command: |
+            make oldconfig
+            make -j$(nproc) ARCH=arm64
 
       # Add more steps as needed, such as copying artifacts, running tests, etc.
       # ...
