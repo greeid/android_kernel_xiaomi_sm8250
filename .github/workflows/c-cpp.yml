@@ -43,12 +43,6 @@ jobs:
             libelf-dev \
             bc
 
-      - name: Configure Kernel
-        run: |
-          cd path/to/your/kernel/source
-          make ARCH=arm64 your_defconfig
-          
       - name: Build Kernel
         run: |
-          cd path/to/your/kernel/source
           make -j$(nproc) ARCH=arm64
