@@ -47,4 +47,4 @@ jobs:
         run: |
           make oldconfig
           make menuconfig
-          make -j$(nproc) ARCH=arm64
+          make 
