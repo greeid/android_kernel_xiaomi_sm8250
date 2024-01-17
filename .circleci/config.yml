@@ -1,9 +1,18 @@
 version: 2.1
+
+orbs:
+  win: circleci/windows@2.2.0
+
 jobs:
-  build:
-    docker:
-      - image: alpine:3.15
+  build-for-linux:
+    docker: 
+      - image: cimg/node:14.10.1
     steps:
-      - run:
-          name: compile Kernel
-          command: make
+      - checkout
+      - run: make
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - build-for-linux
